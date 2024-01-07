@@ -296,6 +296,12 @@ return [
             'icon' => 'fas fa-gamepad',
         ],
 
+        [
+            'text' => 'ユーザー一覧',
+            'url'  => 'users', // ユーザー一覧のURLに変更する
+            'icon' => 'fas fa-users',
+        ],
+
         // AdminLTEデフォルト
         /*
         // Navbar items:

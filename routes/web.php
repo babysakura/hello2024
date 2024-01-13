@@ -23,14 +23,17 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
-    Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
-    Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::get('/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
     Route::put('/update/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
     Route::delete('/delete/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
+    Route::get('/detail/{id}',  [App\Http\Controllers\ItemController::class, 'detail']);
 });
 
 Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 Route::get('users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
 Route::put('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::delete('users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
+
+Route::get('/spots/add', [App\Http\Controllers\ItemController::class, 'spots']);
+Route::post('/spots/add', [App\Http\Controllers\ItemController::class, 'spots']);
+Route::get('/spots', [App\Http\Controllers\ItemController::class, 'spot'])->name('spots.index');

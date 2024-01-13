@@ -14,8 +14,13 @@ class Item extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'prefecture_id',
+        'city',
         'type',
         'detail',
+        'address',
+        'url',
+        'tel',
     ];
 
     /**

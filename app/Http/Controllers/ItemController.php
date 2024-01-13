@@ -29,7 +29,8 @@ class ItemController extends Controller
 
         if ($search) {
             $query->where('name', 'like', "%$search%")
-            ->orWhere('type', 'like', "%$search%");
+            ->orWhere('type', 'like', "%$search%")
+            ->orWhere('prefecture_id', 'like', "%$search%");
         }
         $items = $query->get();
         return view('item.index', compact('items'));
@@ -38,7 +39,7 @@ class ItemController extends Controller
     /**
      * 商品登録
      */
-    public function add(Request $request)
+    public function spots(Request $request)
     {
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
@@ -47,12 +48,17 @@ class ItemController extends Controller
                 'name' => 'required|max:100',
             ]);
 
-            // 商品登録
+            // スポット登録
             Item::create([
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
+                'prefecture_id' => $request->prefecture_id,
+                'city' => $request->city,
                 'type' => $request->type,
                 'detail' => $request->detail,
+                'address' => $request->address,
+                'url' => $request->url,
+                'tel' => $request->tel,
             ]);
 
             return redirect('/items');
@@ -94,11 +100,38 @@ class ItemController extends Controller
         $item = Item::find($id);
 
         if (!$item) {
-            return redirect()->route('items.index')->with('error', 'アイテムが見つかりませんでした');
+            return redirect()->route('items.edit')->with('error', 'アイテムが見つかりませんでした');
         }
 
         $item->delete();
 
         return redirect()->route('items.index')->with('success', 'アイテムが削除されました');
     }
+
+        /**
+     * 詳細画面の表示
+     */
+    public function detail($id)
+    {
+        $item = Item::find($id);
+        return view("item.detail", [
+            'item' => $item,
+        ]);
+    }
+
+    public function spot(Request $request)
+    {
+        $area = $request->input('area');
+        // $areaに基づいて特定のエリアのスポットを取得するクエリを構築
+        $items = Item::where('prefecture_id', $area)->get();
+    
+        if ($items->isEmpty()) {
+            // スポットが登録されていない場合の処理
+            return view('spots.index', ['message' => 'スポットが登録されていません。']);
+        }
+    
+        return view('spots.index', ['items' => $items]);
+    }
+
+    
 }

@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>商品管理</b>',
+    'logo' => '<b>HOME</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -290,10 +290,19 @@ return [
     */
 
     'menu' => [
+
+
+
         [
-            'text' => '商品一覧',
+            'text' => 'スポット一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-heart',
+        ],
+
+        [
+            'text' => 'スポット登録',
+            'url'  => 'spots/add', // スポット一覧のURLに変更する
+            'icon' => 'fas fa-smile-wink',
         ],
 
         [

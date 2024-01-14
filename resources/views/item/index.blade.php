@@ -20,7 +20,10 @@
         </div>
     </div>
 </div>
-
+<div class="mb-2">
+    <!-- ここに何件表示されているかを表示する行を追加 -->
+    <span style="font-weight: bold;">全{{ $items->count() }}件</span>
+</div>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -59,6 +62,9 @@
 @stop
 
 @section('css')
+<style>
+    /* 追加のCSSスタイルが必要な場合はここに記述できます */
+</style>
 @stop
 
 @section('js')

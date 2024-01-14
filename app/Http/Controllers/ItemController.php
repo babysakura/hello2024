@@ -32,7 +32,8 @@ class ItemController extends Controller
             ->orWhere('type', 'like', "%$search%")
             ->orWhere('prefecture_id', 'like', "%$search%");
         }
-        $items = $query->get();
+        $items = $query->paginate(10);
+        // dd($items);
         return view('item.index', compact('items'));
     }
 
@@ -132,6 +133,5 @@ class ItemController extends Controller
     
         return view('spots.index', ['items' => $items]);
     }
-
     
 }

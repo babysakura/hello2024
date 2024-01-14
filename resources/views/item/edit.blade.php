@@ -3,7 +3,7 @@
 @section('title', '商品編集')
 
 @section('content_header')
-<h1>スポット編集</h1>
+<h1 class="text-center font-weight-bold">スポット編集</h1>
 @stop
 
 @section('content')
@@ -11,8 +11,14 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <form action="{{ route('items.update', $item->id) }}" method="post">
+                
                 @csrf
                 @method('put')
+
+        <div class="card card-primary">
+            <form method="POST">
+                @csrf
+                <div class="card-body">
 
                 <div class="form-group">
                     <label for="name">名称</label>

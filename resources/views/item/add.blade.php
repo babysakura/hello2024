@@ -21,9 +21,15 @@
         @endif
 
         <div class="card card-primary">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data" action="/spots/add">
                 @csrf
                 <div class="card-body">
+
+                <div class="form-group">
+                        <label for="image">画像</label>
+                        <input type="file" name="image">
+                    </div>
+
                     <div class="form-group">
                         <label for="name">名称</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="名前">

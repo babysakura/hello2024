@@ -29,8 +29,8 @@ class ItemController extends Controller
 
         if ($search) {
             $query->where('name', 'like', "%$search%")
-            ->orWhere('type', 'like', "%$search%")
-            ->orWhere('prefecture_id', 'like', "%$search%");
+                ->orWhere('type', 'like', "%$search%")
+                ->orWhere('prefecture_id', 'like', "%$search%");
         }
         $items = $query->paginate(10);
         // dd($items);
@@ -48,9 +48,7 @@ class ItemController extends Controller
             $this->validate($request, [
                 'name' => 'required|max:100',
             ]);
-
-            // スポット登録
-            Item::create([
+            $data = [
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
                 'prefecture_id' => $request->prefecture_id,
@@ -60,7 +58,16 @@ class ItemController extends Controller
                 'address' => $request->address,
                 'url' => $request->url,
                 'tel' => $request->tel,
-            ]);
+            ];
+            // 画像取得
+            $image_path = '';
+            if ($request->hasFile('image')) {
+                $image_path    = $request->file('image')->store('image', 'public');
+                $data['image'] = $image_path;
+            }
+
+            // スポット登録
+            Item::create($data);
 
             return redirect('/items');
         }
@@ -109,7 +116,7 @@ class ItemController extends Controller
         return redirect()->route('items.index')->with('success', 'アイテムが削除されました');
     }
 
-        /**
+    /**
      * 詳細画面の表示
      */
     public function detail($id)
@@ -125,13 +132,12 @@ class ItemController extends Controller
         $area = $request->input('area');
         // $areaに基づいて特定のエリアのスポットを取得するクエリを構築
         $items = Item::where('prefecture_id', $area)->get();
-    
+
         if ($items->isEmpty()) {
             // スポットが登録されていない場合の処理
             return view('spots.index', ['message' => 'スポットが登録されていません。']);
         }
-    
+
         return view('spots.index', ['items' => $items]);
     }
-    
 }

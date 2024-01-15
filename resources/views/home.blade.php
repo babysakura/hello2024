@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+<h3>あなたの行きたいが<span style="font-size: larger; font-weight: bold;">ここに</span></h3>
 @stop
 
 @section('content')

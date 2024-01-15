@@ -22,6 +22,7 @@ class Item extends Model
         'address',
         'url',
         'tel',
+        'image',
     ];
 
     /**

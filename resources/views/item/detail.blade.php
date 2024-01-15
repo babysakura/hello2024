@@ -18,6 +18,7 @@
                 <div class="row g-0">
                     <div class="col-md-8">
                         <div class="card-body">
+                            <img src="{{Storage::url($item->image)}}" alt="">
                         <h1 class="m-4 font-weight-bold">{{ $item->name }}</h1>
                             <h4 class="m-4 my-1"> {{ $item->detail }}</h4>
                             <h6 class="m-4 my-3">住所　　 {{ $item->address }}</h6>

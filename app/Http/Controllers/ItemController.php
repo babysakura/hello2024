@@ -75,6 +75,7 @@ class ItemController extends Controller
         return view('item.add');
     }
 
+
     // 編集画面
     public function edit($id)
     {
@@ -96,8 +97,27 @@ class ItemController extends Controller
         if (!$item) {
             return redirect()->route('items.index')->with('error', 'アイテムが見つかりませんでした');
         }
+        $data = [
+            'user_id' => Auth::user()->id,
+            'name' => $request->name,
+            'prefecture_id' => $request->prefecture_id,
+            'city' => $request->city,
+            'type' => $request->type,
+            'detail' => $request->detail,
+            'address' => $request->address,
+            'url' => $request->url,
+            'tel' => $request->tel,
+            'image'=>$item->image,
+        ];
+        // 画像取得
+        $image_path = '';
+        if ($request->hasFile('image')) {
+            $image_path    = $request->file('image')->store('image', 'public');
+            $data['image'] = $image_path;
+        }
 
-        $item->update($request->all());
+        // $item->update($request->all());
+                $item->update($data);
 
         return redirect()->route('items.index')->with('success', 'アイテムが更新されました');
     }

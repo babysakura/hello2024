@@ -3,7 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h3>あなたの行きたいが<span style="font-size: larger; font-weight: bold;">ここに</span></h3>
+
+    <div class="c07 active">
+        <h2>今すぐに<span style="font-size: larger; font-weight: bold;">"TO GO"</span>したくなる</h2>
+    </div>
 @stop
 
 @section('content')
@@ -291,6 +294,7 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/style_map.css">
+<link rel="stylesheet" href="/css/style_home.css">
 @stop
 
 @section('js')

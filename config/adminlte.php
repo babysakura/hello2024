@@ -305,11 +305,11 @@ return [
             'icon' => 'fas fa-smile-wink',
         ],
 
-        [
-            'text' => 'ユーザー一覧',
-            'url'  => 'users', // ユーザー一覧のURLに変更する
-            'icon' => 'fas fa-users',
-        ],
+        // [
+        //     'text' => 'ユーザー一覧',
+        //     'url'  => 'users', // ユーザー一覧のURLに変更する
+        //     'icon' => 'fas fa-users',
+        // ],
 
         // AdminLTEデフォルト
         /*

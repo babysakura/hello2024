@@ -29,10 +29,10 @@ Route::prefix('items')->group(function () {
     Route::get('/detail/{id}',  [App\Http\Controllers\ItemController::class, 'detail']);
 });
 
-Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-Route::get('users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
-Route::put('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-Route::delete('users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
+// Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+// Route::get('users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
+// Route::put('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+// Route::delete('users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
 
 Route::get('/spots/add', [App\Http\Controllers\ItemController::class, 'spots']);
 Route::post('/spots/add', [App\Http\Controllers\ItemController::class, 'spots']);

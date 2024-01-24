@@ -300,16 +300,23 @@ return [
         ],
 
         [
+            'text' => 'お気に入り',
+            'url'  => 'favorite-list',
+            'icon' => 'fas fa-heart',
+        ],
+
+        [
             'text' => 'スポット登録',
             'url'  => 'spots/add', // スポット一覧のURLに変更する
             'icon' => 'fas fa-smile-wink',
         ],
 
-        // [
-        //     'text' => 'ユーザー一覧',
-        //     'url'  => 'users', // ユーザー一覧のURLに変更する
-        //     'icon' => 'fas fa-users',
-        // ],
+        [
+            'text' => 'ユーザー一覧',
+            'url'  => 'users', // ユーザー一覧のURLに変更する
+            'icon' => 'fas fa-users',
+            'key' => 'admin_only',
+        ],
 
         // AdminLTEデフォルト
         /*

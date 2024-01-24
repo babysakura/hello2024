@@ -19,7 +19,7 @@
                     {{--<!-- <form method="POST"> -->--}}
                     @csrf
                     <div class="card-body">
-                    {{$item->image}}
+                    <img width=200 src="data:image/png;base64,{{ $item->image }}" alt="">
                         <div class="form-group">
                             <label for="image">画像</label>
                             <input type="file" name="image">

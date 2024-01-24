@@ -62,8 +62,9 @@ class ItemController extends Controller
             // 画像取得
             $image_path = '';
             if ($request->hasFile('image')) {
-                $image_path    = $request->file('image')->store('image', 'public');
-                $data['image'] = $image_path;
+                $imagePath = $request->file('image');
+                $imageBase64 = base64_encode(file_get_contents($imagePath));
+                $data['image'] = $imageBase64;
             }
 
             // スポット登録
@@ -112,8 +113,9 @@ class ItemController extends Controller
         // 画像取得
         $image_path = '';
         if ($request->hasFile('image')) {
-            $image_path    = $request->file('image')->store('image', 'public');
-            $data['image'] = $image_path;
+            $imagePath = $request->file('image');
+            $imageBase64 = base64_encode(file_get_contents($imagePath));
+            $data['image'] = $imageBase64;
         }
 
         // $item->update($request->all());

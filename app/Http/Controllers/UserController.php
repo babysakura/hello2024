@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -12,6 +13,15 @@ class UserController extends Controller
         $users = User::all();
 
         return view('user.index', compact('users'));
+
+        if (Gate::allows('isAdmin')) {
+            // ユーザ一覧を表示する処理
+            $users = User::all();
+            return view('users.index', compact('users'));
+        } else {
+            abort(403, 'Unauthorized action.');
+        }
+
     }
 
     // 編集画面

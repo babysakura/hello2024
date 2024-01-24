@@ -3,7 +3,7 @@
 @section('title', '商品一覧')
 
 @section('content_header')
-<h1>商品一覧</h1>
+<h1>ユーザー一覧</h1>
 @stop
 
 @section('content')
@@ -67,7 +67,6 @@
                                 </div>
                             </div>
                         </div>
-
                         @endforeach
                     </tbody>
                 </table>

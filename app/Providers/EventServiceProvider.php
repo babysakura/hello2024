@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -25,7 +26,11 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
+            if (auth()->user()->isAdmin == 2){
+                $event->menu->remove('admin_only');
+            }
+        });
     }
 
     /**

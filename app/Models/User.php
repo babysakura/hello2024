@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Item;
 
 class User extends Authenticatable
 {
@@ -42,4 +43,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function favoriteItems()
+    {
+        return $this->belongsToMany(Item::class, 'favorites', 'user_id', 'item_id')->get();
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('Role'::class);
+    }
+    
 }

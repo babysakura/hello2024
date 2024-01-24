@@ -16,16 +16,29 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img class="w-100" src="{{Storage::url($item->image)}}" alt="">
+                        <img class="w-100" src="data:image/png;base64,{{ $item->image }}" alt="">
                     </div>
                     <div class="col-md-8">
-                        <div class="card-body">
-                            <h1 class="m-4">{{ $item->name }}</h1>
-                            <h4 class="m-4 my-1"> {{ $item->detail }}</h4>
-                            <h6 class="m-4 my-3">住所　　 {{ $item->address }}</h6>
-                            <h6 class="m-4 my-3">TEL　　 {{ $item->tel }}</h6>
-                            <h6 class="m-4 my-3">URL　　 {{ $item->url }}</h6>
-                            <p class="m-4">{{ $item->product_detail }}</p>
+                        <div class="card-body d-flex justify-content-between align-items-start">
+                            <div>
+                                <h1 class="m-4">{{ $item->name }}</h1>
+                                <h4 class="m-4 my-1"> {{ $item->detail }}</h4>
+                                <h6 class="m-4 my-3">住所　　 {{ $item->address }}</h6>
+                                <h6 class="m-4 my-3">TEL　　 {{ $item->tel }}</h6>
+                                <h6 class="m-4 my-3">URL　　 {{ $item->url }}</h6>
+                                <p class="m-4">{{ $item->product_detail }}</p>
+                            </div>
+
+                            <form action="{{ route('toggle-favorite', $item->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">
+                                    @if($item->isFavoritedBy(auth()->user()->id))
+                                    お気に入り解除
+                                    @else
+                                    お気に入りに追加
+                                    @endif
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -33,7 +46,11 @@
         </div>
         <a href="/items" class="btn btn-outline-primary mr-1">戻る</a>
         <td class="text-right">
+            @if(auth()->user()->isAdmin == 1)
             <a href="{{ url('items/edit/'.$item->id) }}" class="btn btn-outline-secondary">このスポットを編集</a>
+            @endif
         </td>
     </div>
 </body>
+
+</html>

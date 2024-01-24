@@ -3,7 +3,7 @@
 @section('title', 'スポット一覧')
 
 @section('content_header')
-<h1>スポット一覧</h1>
+<h1 class="text-center font-weight-bold">スポット一覧</h1>
 @stop
 
 @section('content')

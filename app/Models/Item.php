@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
+    use HasFactory;
+
     
     /**
      * The attributes that are mass assignable.
@@ -40,4 +43,14 @@ class Item extends Model
      */
     protected $casts = [
     ];
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function isFavoritedBy($userId)
+    {
+        return $this->favorites()->where('user_id', $userId)->exists();
+    }
 }

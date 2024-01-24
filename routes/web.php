@@ -29,11 +29,18 @@ Route::prefix('items')->group(function () {
     Route::get('/detail/{id}',  [App\Http\Controllers\ItemController::class, 'detail']);
 });
 
-// Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-// Route::get('users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
-// Route::put('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-// Route::delete('users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
+Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::get('users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
+Route::put('users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+Route::delete('users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
 
 Route::get('/spots/add', [App\Http\Controllers\ItemController::class, 'spots']);
 Route::post('/spots/add', [App\Http\Controllers\ItemController::class, 'spots']);
 Route::get('/spots', [App\Http\Controllers\ItemController::class, 'spot'])->name('spots.index');
+
+Route::get('/favorite-list',  [App\Http\Controllers\FavoriteController::class, 'showFavoriteList'])
+    ->name('favorite-list')
+    ->middleware('auth');
+Route::post('/toggle-favorite/{id}', [App\Http\Controllers\FavoriteController::class, 'toggleFavorite'])
+    ->name('toggle-favorite')
+    ->middleware('auth');

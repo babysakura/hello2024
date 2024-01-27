@@ -91,6 +91,13 @@ class ItemController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate(
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => '名前は必須です。',
+            ]);
         // リクエストデータの検証などが必要であればここで行う
 
         $item = Item::find($id);
@@ -108,7 +115,7 @@ class ItemController extends Controller
             'address' => $request->address,
             'url' => $request->url,
             'tel' => $request->tel,
-            'image'=>$item->image,
+            'image' => $item->image,
         ];
         // 画像取得
         $image_path = '';
@@ -119,7 +126,7 @@ class ItemController extends Controller
         }
 
         // $item->update($request->all());
-                $item->update($data);
+        $item->update($data);
 
         return redirect()->route('items.index')->with('success', 'アイテムが更新されました');
     }

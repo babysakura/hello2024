@@ -21,47 +21,55 @@ class UserController extends Controller
         } else {
             abort(403, 'Unauthorized action.');
         }
-
     }
 
     // 編集画面
     public function edit($id)
     {
         $user = User::find($id);
-    
+
         if (!$user) {
             return redirect()->route('users.index')->with('error', 'ユーザーが見つかりませんでした');
         }
-    
+
         return view('user.edit', compact('user'));
     }
-    
+
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ],
+        [
+            'name.required' => '名前は必須です。',
+            'email.required' => 'メールアドレスは必須です。',
+        ]);
+        
         // リクエストデータの検証などが必要であればここで行う
-    
+
         $user = User::find($id);
-    
+
         if (!$user) {
             return redirect()->route('users.index')->with('error', 'ユーザーが見つかりませんでした');
         }
-    
+
         $user->update($request->all());
-    
+
         return redirect()->route('users.index')->with('success', 'ユーザーが更新されました');
     }
 
-        // 削除機能
-        public function delete($id)
-        {
-            $user = User::find($id);
-    
-            if (!$user) {
-                return redirect()->route('users.index')->with('error', 'アイテムが見つかりませんでした');
-            }
-    
-            $user->delete();
-    
-            return redirect()->route('users.index')->with('success', 'アイテムが削除されました');
+    // 削除機能
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'アイテムが見つかりませんでした');
         }
+
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'アイテムが削除されました');
+    }
 }

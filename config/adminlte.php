@@ -296,7 +296,7 @@ return [
         [
             'text' => 'スポット一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-heart',
+            'icon' => 'fas fa-smile-wink',
         ],
 
         [
@@ -308,7 +308,7 @@ return [
         [
             'text' => 'スポット登録',
             'url'  => 'spots/add', // スポット一覧のURLに変更する
-            'icon' => 'fas fa-smile-wink',
+            'icon' => 'fas fa-square-plus',
         ],
 
         [

@@ -12,6 +12,12 @@
 <body>
     <h1 style="color:#555555; text-align:center; font-size:1.2em; padding:24px 0px; font-weight:bold;">スポット詳細</h1>
     <div class="container">
+
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="row align-items-start">
             <div class="card mb-3">
                 <div class="row g-0">

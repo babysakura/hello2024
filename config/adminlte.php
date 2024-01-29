@@ -308,14 +308,16 @@ return [
         [
             'text' => 'スポット登録',
             'url'  => 'spots/add', // スポット一覧のURLに変更する
-            'icon' => 'fas fa-square-plus',
+            'icon' => 'fas fa-plus',
+            'key' => 'menu4_admin_only',
+            
         ],
 
         [
             'text' => 'ユーザー一覧',
             'url'  => 'users', // ユーザー一覧のURLに変更する
             'icon' => 'fas fa-users',
-            'key' => 'admin_only',
+            'key' => 'menu3_admin_only',
         ],
 
         // AdminLTEデフォルト

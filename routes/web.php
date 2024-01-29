@@ -26,7 +26,8 @@ Route::prefix('items')->group(function () {
     Route::get('/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
     Route::put('/update/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
     Route::delete('/delete/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
-    Route::get('/detail/{id}',  [App\Http\Controllers\ItemController::class, 'detail']);
+    //詳細のルーティング
+    Route::get('/detail/{id}',  [App\Http\Controllers\ItemController::class, 'detail'])->name('items.detail');
 });
 
 Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');

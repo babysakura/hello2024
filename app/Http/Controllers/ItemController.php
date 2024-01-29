@@ -128,7 +128,7 @@ class ItemController extends Controller
         // $item->update($request->all());
         $item->update($data);
 
-        return redirect()->route('items.index')->with('success', 'アイテムが更新されました');
+        return redirect()->route('items.detail', $item->id)->with('success', 'アイテムが更新されました');
     }
 
     // 削除機能

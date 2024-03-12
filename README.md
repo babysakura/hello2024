@@ -1,43 +1,32 @@
-## 商品管理システム
+# 
 
-### 環境構築手順
+### 概要
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLのデータベース作成（名前：item_management）
-* Macの場合 .env の DB_PASSWORD を root に修正（Windowsは修正不要）
+ユーザーはスポット一覧観覧、お気に入りが出来ます。
+お気に入りしたスポットはお気に入りページで観覧可能です。
+管理者はスポットを投稿、編集、削除が可能でき、ユーザーの管理も出来きます。
 
-    ```INI
-    DB_PASSWORD=root
+### 主な機能
+- ログイン・ログアウト機能
+- 都道府県一覧画面
+- スポット一覧画面
+- ユーザー一覧画面
+- お気に入り画面
+- スポット登録、編集、削除、検索機能
+
+### 開発環境
+    ```
+    PHP 8.2.10
+    MySQL 5.7.39
+    Laravel 10.38.2
     ```
 
-* APP_KEY生成
+### 設計書
+[設計書ページへ](https://drive.google.com/drive/folders/1XBOIlIyxqj45a_NWG-Ng3zA98INg911F)
 
-    ```console
-    php artisan key:generate
-    ```
+### システム閲覧
+[アプリケーションページへ](https://togo-place-3c6a53921134.herokuapp.com/login )
 
-* Composerインストール
-
-    ```console
-    composer install
-    ```
-
-* フロント環境構築
-
-    ```console
-    npm ci
-    npm run build
-    ```
-
-* マイグレーション
-
-    ```console
-    php artisan migrate
-    ```
-
-* 起動
-
-    ```console
-    php artisan serve
-    ```
+### テストアカウント情報
+メールアドレス :  sakura@jp
+パスワード     :  sakura456258

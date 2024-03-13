@@ -22,7 +22,7 @@
     ```
 
 ### 設計書
-[設計書ページへ](https://drive.google.com/drive/folders/1XBOIlIyxqj45a_NWG-Ng3zA98INg911F)
+[設計書ページへ](https://drive.google.com/drive/folders/1fn9eOSJy4cVadavqnjalAjCpjIap4sDT?hl=ja)
 
 ### システム閲覧
 [アプリケーションページへ](https://togo-place-3c6a53921134.herokuapp.com/login )
